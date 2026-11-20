@@ -104,6 +104,11 @@ ul.tight{margin:6px 0;padding-left:20px} ul.tight li{margin-bottom:6px}
   <a href="#overview">考试总览</a><a href="#u1">Unit 1</a><a href="#u2">Unit 2</a><a href="#u3">Unit 3</a><a href="#u4">Unit 4</a><a href="#sizheng">思政 20 词</a><a href="#rules">答题规则</a>
 </nav>
 
+<div style="margin:14px 0 4px">
+  <button class="toggle" id="expandAllBtn" type="button">全部展开（含答案）</button>
+  <span style="color:var(--muted);font-size:13px;margin-left:8px">一键展开所有课文、译文和答案，方便整页复制</span>
+</div>
+
 <section id="overview">
   <h2>考试总览</h2>
   <p class="sub">2026-11-03 课上公布 · 范围为教材第 1–4 单元</p>
@@ -451,6 +456,21 @@ exCard(u4,"练习二 · 词组填空","书 p.129 · 8 题全看 · 一项多余�
 transCard(u4,"翻译 · 中国人工智能（书 p.140 · Section B 重点）",
 "中国人工智能起步较晚。不过，改革开放以来，尤其是近十年，中国的人工智能发展迅速。人工智能的发展已成为一项国家战略，有数十万计的科学技术人员和大学师生从事人工智能的研究、学习、开发与应用。互联网和大数据推动人工智能进入了新的发展阶段。中国在人工智能方面取得了突破，已在自然语言处理、语音识别、图像识别、机器学习、虚拟现实、智能驾驶和智能机器人等领域取得了一大批具有国际先进水平的应用成果。",
 "<p class='en'>China is a late starter in artificial intelligence. However, since the reform and opening up, especially in the recent decade, China's AI has been developing rapidly. The development of AI has become a national strategy, with hundreds of thousands of scientific and technical personnel, university teachers and students engaged in the research, learning, development and application of AI.</p><p class='en'>The Internet and big data have pushed AI into a new stage of development. China has made breakthroughs in AI, and has achieved a large number of internationally advanced application results in fields like natural language processing, speech recognition, image recognition, machine learning, virtual reality, intelligent driving and intelligent robots.</p>");
+</script>
+<script>
+(function(){
+  var btn=document.getElementById("expandAllBtn");
+  var open=false;
+  btn.addEventListener("click",function(){
+    open=!open;
+    document.querySelectorAll("details").forEach(function(d){d.open=open;});
+    document.querySelectorAll("#units .card .toggle").forEach(function(t){
+      var c=t.closest(".card");
+      if(c&&c.classList.contains("show-ans")!==open){t.click();}
+    });
+    btn.textContent=open?"全部收起":"全部展开（含答案）";
+  });
+})();
 </script>
 </body>
 </html>
